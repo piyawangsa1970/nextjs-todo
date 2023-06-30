@@ -13,17 +13,13 @@ const getTopics = async () => {
 		if (!res.ok) {
 			throw new Error("Failed to fetch topics")
 		}
-		const json = await res.json()
-		console.log(json);
-
-		return json
+		return res.json()
 	} catch (error) {
 		console.log("Error loading topics", error);
 	}
 }
 
 async function TopicList() {
-	console.log('TopicList')
 	const { topics } = await getTopics()
 	return (
 		<>{topics.map((topic:any) => (
